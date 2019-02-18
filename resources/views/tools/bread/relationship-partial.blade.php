@@ -93,21 +93,21 @@
         </div>
         
         <!-- textarea for additional details -->
-		<div class="relationship_details_content margin_top">
-            <div class="col-xs-12" style="margin: 0px !important; padding: 0px !important;">
-				<div class="alert alert-danger validation-error">
-					{{ __('voyager::json.invalid') }}
-				</div>
-				<label>{{ __('voyager::database.relationship.relationship_details') }}</label>
-				<textarea id="json-input-{{ ($relationship['field']) }}" class="resizable-editor" data-editor="json" name="field_details_{{ $relationship['field'] }}">
-					@if(isset($relationshipDetails->details))
-						{{ json_encode($relationshipDetails->details) }}
-					@else
-						{}
-					@endif
-				</textarea>
+	<div class="relationship_details_content margin_top">
+        	<div class="col-xs-12" style="margin: 0px !important; padding: 0px !important;">
+			<div class="alert alert-danger validation-error">
+				{{ __('voyager::json.invalid') }}
 			</div>
+			<label>{{ __('voyager::database.relationship.relationship_details') }}</label>
+			<textarea id="json-input-{{ ($relationship['field']) }}" class="resizable-editor" data-editor="json" name="field_details_{{ $relationship['field'] }}">
+			@if(isset($relationshipDetails->details))
+				{{ json_encode($relationshipDetails->details) }}
+			@else
+				{}
+			@endif
+			</textarea>
 		</div>
+	</div>
         
     </div>
     <input type="hidden" value="0" name="field_required_{{ $relationship['field'] }}" checked="checked">
