@@ -187,8 +187,14 @@ class DataType extends Model
                         'pivot'       => ($requestData['relationship_type_'.$relationship] == 'belongsToMany') ? '1' : '0',
                         'taggable'    => isset($requestData['relationship_taggable_'.$relationship]) ? $requestData['relationship_taggable_'.$relationship] : '0',
                     ];
-
-                    $requestData['field_details_'.$relationship] = json_encode($relationshipDetails);
+                    
+                    // retrive field_details textarea into relationship ( resources/views/tools/bread/relationship-partial.blade.php )
+                    $details = json_decode($requestData['field_details_'.$relationship], true);
+                    
+                    $merge = array_merge($details, $relationshipDetails);
+                    $merge['details'] = $details;
+                    
+                    $requestData['field_details_'.$relationship] = json_encode($merge);
                 }
             }
         }
